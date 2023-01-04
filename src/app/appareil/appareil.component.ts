@@ -9,6 +9,7 @@ export class AppareilComponent {
 
     @Input() appareilName: string | undefined;
     @Input() appareilStatus: string | undefined;
+    @Input() id: number | undefined;
   
     getStatus(){
       return this.appareilStatus

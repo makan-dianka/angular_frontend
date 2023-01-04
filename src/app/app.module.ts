@@ -13,12 +13,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { authGuard } from './services/auth.guard.service';
 
 const appRoutes: Routes = [
-  {path: 'appareil', component: AppareilViewComponent},
-  {path: 'appareil/:id', component: SingleAppareilComponent},
+  {path: 'appareil', canActivate: [authGuard], component: AppareilViewComponent},
+  {path: 'appareil/:id', canActivate: [authGuard], component: SingleAppareilComponent},
   {path: 'auth', component: AuthComponent},
-  {path: '', component: AppareilViewComponent},
+  {path: '', canActivate: [authGuard], component: AppareilViewComponent},
   {path: 'not-found', component: FourOhFourComponent},
   {path: '**', redirectTo: "/not-found"},
 ];
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
   providers: [
     AppareilService,
     AuthService,
+    authGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -16,10 +16,10 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { authGuard } from './services/auth.guard.service';
 
 const appRoutes: Routes = [
-  {path: 'appareil', canActivate: [authGuard], component: AppareilViewComponent},
-  {path: 'appareil/:id', canActivate: [authGuard], component: SingleAppareilComponent},
+  {path: 'appareil', component: AppareilViewComponent}, // canActivate: [authGuard],
+  {path: 'appareil/:id', component: SingleAppareilComponent}, //  canActivate: [authGuard],
   {path: 'auth', component: AuthComponent},
-  {path: '', canActivate: [authGuard], component: AppareilViewComponent},
+  {path: '', component: AppareilViewComponent}, // canActivate: [authGuard],
   {path: 'not-found', component: FourOhFourComponent},
   {path: '**', redirectTo: "/not-found"},
 ];
